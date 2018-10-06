@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CP1</title>
+</head>
+<body onkeypress="play()">
+<center>
+		<audio id="song" src="song.mp3"></audio>
+	<p id="num" style="font-size:200px; ">0</p>
+<button onclick="next()">9adim</button>
+<button onclick="reset()">reset</button>
+<button onclick="back()">9adim bitweli</button>
+</center>
+</body>
+<script>
+	let song = document.getElementById("song");
+	let score = document.getElementById("num");
+	let colors = ["green","skyblue","red","black","white","beige"];
+
+	const next =()=>{ song.currentTime+= 10; }
+
+	const back =() =>{ song.currentTime-= 10; }
+
+	const reset =() =>{
+		score.innerHTML= 0 ;
+		song.currentTime = 0 ;
+	}
+
+	const play =() =>{ 
+		
+		document.body.style.backgroundColor = colors[(score.innerHTML % colors.length)];
+		score.innerHTML++;
+		song.play(); 
+	}
+
+	const pause =() =>{ song.pause(); }
+
+	setInterval(pause,1000);
+
+	
+</script>
+</html>
